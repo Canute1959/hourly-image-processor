@@ -20,7 +20,27 @@ def test_daylight_all_year():
         current += one_day
         time.sleep(1)
 
-def test_daylight_single_day():
-    pass
+def test_daylight_single_day(datostr="2026-05-19"):
+    dato = dt.date.fromisoformat(datostr)
+    for klokkeslett in range(0,24):
+        act_date_time = dt.datetime.combine(
+            dato,
+            dt.time(klokkeslett, 0),
+            tzinfo=dt.UTC,
+        )  
+        result = daylight.is_light_enough(act_date_time=act_date_time)     
+        if result == False:
+            print(datostr, klokkeslett, result)
 
-test_daylight_all_year()
+
+def show_daylight_single_day(datostr):
+    dato = dt.date.fromisoformat(datostr)
+    act_date_time = dt.datetime.combine(
+        dato,
+        dt.time(0, 0),
+        tzinfo=dt.UTC,
+    )  
+    result = daylight.is_light_enough(act_date_time=act_date_time)     
+
+
+test_daylight_single_day(datostr="2026-05-18")
