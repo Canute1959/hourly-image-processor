@@ -20,4 +20,7 @@ def test_daylight_all_year():
         current += one_day
         time.sleep(1)
 
+def test_daylight_single_day():
+    pass
+
 test_daylight_all_year()

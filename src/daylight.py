@@ -13,7 +13,8 @@ def is_light_enough(
     ):
     """
     Returnerer True når det er civil twilight eller lysere.
-
+    https://api.sunrise-sunset.org/v2?date=2026-09-20&lat=64.01&lng=9.88&tz=UTC
+    Dokumentasjon av api https://sunrise-sunset.org/api
     Alle tider håndteres i UTC.
     """
 
@@ -46,9 +47,9 @@ def is_light_enough(
     print(data)
 # TODO sørge for at det blir tatt bilde selv når vi ikke får svar fra API
 #      Dette må skje i den rutinen som kaller opp funksjon is_light_enough
-    if data.get("status") != "OK":
+    if "error" in data:
         raise RuntimeError(
-            f"Feil fra sunrise-sunset.org: {data.get('status')}"
+            f"{data.get('error')}: {data.get('message')}"
         )
 
     results = data["results"]
@@ -94,23 +95,3 @@ def is_light_enough(
         act_date_time <= civil_end
         or act_date_time >= civil_begin
     )
-def test_daylight_all_year():
-    year = 2026
-    current = dt.date(year, 1, 1)
-    one_day = dt.timedelta(days=1)
-    while current.year == year:
-        if current.month != 5:
-            current += one_day
-            continue
-        # print(current)
-
-        act_date_time = dt.datetime.combine(
-            current,
-            dt.time(12, 0),
-            tzinfo=dt.UTC,
-        )       
-        print(current, is_light_enough(act_date_time=act_date_time))
-        current += one_day
-        time.sleep(1)
-
-test_daylight_all_year()
