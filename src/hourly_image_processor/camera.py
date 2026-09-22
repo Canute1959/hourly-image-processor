@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 def take_picture(
-    root_directory="/home/knut/Pictures/timelapse",
+    root_directory="/home/knut/projects/hourly-image-processor/data/temp",
     width=1920,
     height=1080,
 ) -> Path:
