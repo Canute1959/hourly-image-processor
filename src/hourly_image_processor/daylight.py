@@ -65,10 +65,13 @@ def is_light_enough(
                 f"begin={civil_begin_str}, end={civil_end_str}"
             )
 
-        print(f' {act_date_time} : civil_twilight_begin: {dt.datetime.fromisoformat(data["civil_twilight_begin"]).strftime("%H:%M")} \
-                civil_twilight_end: {dt.datetime.fromisoformat(data["civil_twilight_end"]).strftime("%H:%M")} \
-                sunrise: {dt.datetime.fromisoformat(data["sunrise"]).strftime("%H:%M")} \
-                sunset : {dt.datetime.fromisoformat(data["sunset"]).strftime("%H:%M")} ')
+        print(
+            f'{act_date_time} : '
+            f'civil_twilight_begin: {dt.datetime.fromisoformat(data["civil_twilight_begin"]).strftime("%H:%M")} '
+            f'civil_twilight_end: {dt.datetime.fromisoformat(data["civil_twilight_end"]).strftime("%H:%M")} '
+            f'sunrise: {dt.datetime.fromisoformat(data["sunrise"]).strftime("%H:%M")} '
+            f'sunset : {dt.datetime.fromisoformat(data["sunset"]).strftime("%H:%M")} '
+        )
 
         civil_begin = dt.datetime.fromisoformat(civil_begin_str)
         civil_end = dt.datetime.fromisoformat(civil_end_str)
