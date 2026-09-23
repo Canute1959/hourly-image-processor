@@ -1,7 +1,7 @@
 from hourly_image_processor.daylight import is_light_enough
 from hourly_image_processor.camera import take_picture
-from hourly_image_processor.image_processor import proces
-from hourly_image_processor.uploader import upload_image
+from hourly_image_processor.image_processor import process_image
+# from hourly_image_processor.uploader import upload_image
 
 def main():
     if not is_light_enough():
